@@ -18,8 +18,8 @@ Welcome to **Aura-Bot**, the next-generation AI assistant that goes beyond ChatG
 
 ## 📥 Download
 
-📱 **iPhone:** [Download on the App Store](#)  
-📱 **Android:** [Download APK](#)  
+📱 **iPhone:** [Download on the App Store](https://aura-bot.vercel.app/)  
+📱 **Android:** APK LINK (https://drive.google.com/file/d/1jwfENb5xNs5XqJka-cO5KEqdSY7cRiid/view?usp=sharing)  
 
 ---
 
