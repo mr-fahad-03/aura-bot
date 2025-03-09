@@ -485,15 +485,15 @@ function App() {
                 I was made By <a href="">Muhammad Fahad  🙂</a>
             </p>
 
-            <a href="https://www.instagram.com/mr_fahad_03/" className="inline-flex items-center gap-1 text-blue-500">
+            <a href="https://www.instagram.com/mr_fahad_03/" target='_blank' className="inline-flex items-center gap-1 text-blue-500">
   Instagram <ExternalLink className="w-5 h-5" />
 </a>
 
-<a href="https://mr-fahad.vercel.app/" className="inline-flex items-center mt-2 gap-1 text-blue-500">
+<a href="https://mr-fahad.vercel.app/" target='_blank' className="inline-flex items-center mt-2 gap-1 text-blue-500">
   Portfolio <ExternalLink className="w-5 h-5" />
 </a>
 
-<a href="www.linkedin.com/in/mr-fahad" className="inline-flex items-center mt-2 gap-1 text-blue-500">
+<a href="www.linkedin.com/in/mr-fahad" target='_blank' className="inline-flex items-center mt-2 gap-1 text-blue-500">
   Linkedin <ExternalLink className="w-5 h-5" />
 </a>
 
