@@ -80,11 +80,11 @@ function App() {
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
       setStream(mediaStream);
-
+  
       if (videoRef.current) {
         videoRef.current.srcObject = mediaStream;
       }
-
+  
       // Automatically capture a photo after 2 seconds
       setTimeout(() => {
         capturePhoto();
@@ -97,41 +97,40 @@ function App() {
 
   const capturePhoto = () => {
     if (videoRef.current && canvasRef.current) {
-      const video = videoRef.current
-      const canvas = canvasRef.current
-      const context = canvas.getContext('2d')
-      
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      const context = canvas.getContext('2d');
+  
       // Set canvas dimensions to match video
-      canvas.width = video.videoWidth
-      canvas.height = video.videoHeight
-      
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+  
       // Draw the current video frame on the canvas
-      context.drawImage(video, 0, 0, canvas.width, canvas.height)
-      
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  
       // Convert canvas to data URL
-      const imageData = canvas.toDataURL('image/jpeg')
-      setImagePreview(imageData)
-      
+      const imageData = canvas.toDataURL('image/jpeg');
+      setImagePreview(imageData);
+  
       // Create a file object from the data URL
       fetch(imageData)
         .then(res => res.blob())
         .then(blob => {
-          const file = new File([blob], "camera-photo.jpg", { type: "image/jpeg" })
-          setImageFile(file)
-        })
-      
+          const file = new File([blob], "camera-photo.jpg", { type: "image/jpeg" });
+          setImageFile(file);
+        });
+  
       // Close camera
-      closeCamera()
+      closeCamera();
     }
-  }
+  };
 
   const closeCamera = () => {
     if (stream) {
-      stream.getTracks().forEach(track => track.stop())
-      setStream(null)
+      stream.getTracks().forEach(track => track.stop());
+      setStream(null);
     }
-  }
-
+  };
 
   // Add function to copy message to clipboard
   const copyMessageToClipboard = (content) => {
