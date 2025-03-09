@@ -627,13 +627,11 @@ function App() {
             </div>
           </form>
 
-          {messages.length == 0 && (
-            <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-4">
               <button className="text-sm text-gray-400 hover:text-gray-200">
                 Created By Mr ~FZ
               </button>
             </div>
-          )}
         </div>
       </div>
       
