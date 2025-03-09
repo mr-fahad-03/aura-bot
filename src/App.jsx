@@ -613,13 +613,22 @@ function App() {
                   onChange={handleImageUpload}
                 />
               </button>
+
               <button
                 type="button"
-                onClick={openCamera}
-                className="p-1 sm:p-2 text-gray-400 hover:text-gray-200 flex-shrink-0 block"
+                onClick={() => fileInputRef.current.click()}
+                className="p-1 sm:p-2 text-gray-400 hover:text-gray-200 flex-shrink-0"
               >
                 <Camera className="w-5 h-5" />
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                />
               </button>
+          
               <button
                 type="submit"
                 disabled={isLoading || (!query.trim() && !imageFile)}
