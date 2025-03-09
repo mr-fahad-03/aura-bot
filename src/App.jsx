@@ -3,7 +3,7 @@ import { Search, Send, Image, Camera, X, MessageSquare, Sparkles, Clock, Menu, U
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
-const API_KEY = "AIzaSyDLBY1bb-r5s6RKg680Ld8uqBkcYmjZR2k"
+const API_KEY = import.meta.env.VITE_API_KEY;
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`
 
 function App() {
