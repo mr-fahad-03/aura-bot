@@ -78,26 +78,22 @@ function App() {
 
   const openCamera = async () => {
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true })
-      setStream(mediaStream)
-      setShowCamera(true)
-      
-      if (videoRef.current) {
-        videoRef.current.srcObject = mediaStream
-      }
-    } catch (error) {
-      console.error('Error accessing camera:', error)
-      alert('Unable to access camera. Please make sure you have granted camera permissions.')
-    }
-  }
+      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      setStream(mediaStream);
 
-  const closeCamera = () => {
-    if (stream) {
-      stream.getTracks().forEach(track => track.stop())
-      setStream(null)
+      if (videoRef.current) {
+        videoRef.current.srcObject = mediaStream;
+      }
+
+      // Automatically capture a photo after 2 seconds
+      setTimeout(() => {
+        capturePhoto();
+      }, 2000); // Adjust the delay as needed
+    } catch (error) {
+      console.error('Error accessing camera:', error);
+      alert('Unable to access camera. Please make sure you have granted camera permissions.');
     }
-    setShowCamera(false)
-  }
+  };
 
   const capturePhoto = () => {
     if (videoRef.current && canvasRef.current) {
@@ -128,6 +124,14 @@ function App() {
       closeCamera()
     }
   }
+
+  const closeCamera = () => {
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop())
+      setStream(null)
+    }
+  }
+
 
   // Add function to copy message to clipboard
   const copyMessageToClipboard = (content) => {
@@ -295,7 +299,7 @@ function App() {
                   onClick={() => navigator.clipboard.writeText(code)}
                 >
                   <Copy className="w-4 h-4" />
-                  <span>Copy code</span>
+                  <span>Select Text to Copy</span>
                 </button>
               </div>
               <SyntaxHighlighter
@@ -635,39 +639,7 @@ function App() {
         </div>
       </div>
       
-      {/* Camera Modal */}
-      {showCamera && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="bg-gray-900 rounded-lg p-4 max-w-lg w-full border border-gray-700">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-medium text-white">Take a Photo</h3>
-              <button 
-                onClick={closeCamera}
-                className="text-gray-400 hover:text-gray-200"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="relative">
-              <video 
-                ref={videoRef}
-                autoPlay
-                playsInline
-                className="w-full rounded-lg border border-gray-700"
-              />
-              <canvas ref={canvasRef} className="hidden" />
-            </div>
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={capturePhoto}
-                className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium"
-              >
-                Capture Photo
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+    
     </div>
   )
 }
